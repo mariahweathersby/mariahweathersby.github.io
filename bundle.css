@@ -25,11 +25,10 @@ body {
     max-width: 80vw;
     flex: 2; }
   #game-stage-wrapper #game-stage {
-    width: 100vw;
-    height: 100vh; }
-    .isMobile #game-stage-wrapper #game-stage {
-      width: 80vw;
-      max-width: 80vw; }
+    height: 100vh;
+    /* flex: 1; */
+    display: block;
+    width: 100%; }
 
 #game-stage {
   height: 100vh; }
