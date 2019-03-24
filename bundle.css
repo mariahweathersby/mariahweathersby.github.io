@@ -33,5 +33,17 @@ body {
   .control-button:first-of-type {
     border-bottom: #ffffff solid thin; }
 
+@media only screen and (orientation: portrait) {
+  #global-wrapper {
+    visibility: hidden;
+    display: none; }
+  #rotation-error {
+    display: block; } }
+
+@media only screen and (orientation: landscape) {
+  #rotation-error {
+    display: none;
+    visibility: hidden; } }
+
 
 /*# sourceMappingURL=bundle.css.map*/
