@@ -19,13 +19,17 @@ body {
 #game-stage-wrapper {
   height: 100vh;
   overflow: hidden;
-  width: 100vw; }
+  width: 100vw;
+  display: flex; }
   .isMobile #game-stage-wrapper {
     max-width: 80vw;
     flex: 2; }
   #game-stage-wrapper #game-stage {
-    width: 100%;
-    height: 100%; }
+    width: 100vw;
+    height: 100vh; }
+    .isMobile #game-stage-wrapper #game-stage {
+      width: 80vw;
+      max-width: 80vw; }
 
 #game-stage {
   height: 100vh; }
