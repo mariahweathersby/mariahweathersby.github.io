@@ -53,7 +53,16 @@ html, body {
   width: 100vw; }
 
 body {
-  color: #0000ff; }
+  background: rgba(0, 0, 0, 0.75); }
+  body::after {
+    content: "";
+    background: url(src/assets/starField.png);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1; }
 
 #rotation-error {
   position: absolute;
@@ -64,7 +73,6 @@ body {
 #global-wrapper {
   height: 100vh;
   width: 100vw;
-  background: red;
   z-index: 10; }
   #global-wrapper .control-panel {
     position: fixed;
@@ -85,7 +93,18 @@ body {
     height: 100vh;
     display: inline-block;
     overflow: hidden;
+    position: relative;
     z-index: 20; }
+    #global-wrapper #game-stage-wrapper #crosshair {
+      position: absolute;
+      height: 30px;
+      width: 30px;
+      margin: auto;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: orange; }
 
 .control-button {
   height: 50vh;
