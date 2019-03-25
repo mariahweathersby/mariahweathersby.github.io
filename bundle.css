@@ -1,3 +1,46 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
 :root {
   --isMobile: 0; }
 
@@ -12,34 +55,37 @@ html, body {
 body {
   color: #0000ff; }
 
-#global-wrapper {
-  display: flex;
-  flex-direction: row; }
-
-#game-stage-wrapper {
+#rotation-error {
+  position: absolute;
   height: 100vh;
-  overflow: hidden;
   width: 100vw;
-  display: flex; }
-  .isMobile #game-stage-wrapper {
-    max-width: 80vw;
-    flex: 2; }
-  #game-stage-wrapper #game-stage {
+  z-index: 20; }
+
+#global-wrapper {
+  height: 100vh;
+  width: 100vw;
+  background: red;
+  z-index: 10; }
+  #global-wrapper .control-panel {
+    position: fixed;
     height: 100vh;
-    /* flex: 1; */
-    display: block;
-    width: 100%; }
-
-#game-stage {
-  height: 100vh; }
-
-.control-panel {
-  text-align: center;
-  background: green; }
-  .isMobile .control-panel {
+    width: 15%;
+    background: rgba(255, 255, 255, 0.75);
+    top: 0;
+    z-index: 30;
+    visibility: hidden; }
+    #global-wrapper .control-panel.left {
+      left: 0; }
+    #global-wrapper .control-panel.right {
+      right: 0; }
+    .isMobile #global-wrapper .control-panel {
+      visibility: visible; }
+  #global-wrapper #game-stage-wrapper {
+    width: 100%;
+    height: 100vh;
     display: inline-block;
-    flex: 0.5;
-    min-width: 5vw; }
+    overflow: hidden;
+    z-index: 20; }
 
 .control-button {
   height: 50vh;
