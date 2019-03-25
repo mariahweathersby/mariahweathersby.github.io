@@ -97,6 +97,8 @@ body {
       font-size: 3em;
       text-shadow: 0 0 7.5px #00ff00;
       vertical-align: middle; }
+      .isMobile #math-viewport #current-problem h3 {
+        font-size: 2em; }
   #math-viewport div {
     display: inline-block;
     vertical-align: top;
