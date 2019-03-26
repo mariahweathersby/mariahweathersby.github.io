@@ -17,7 +17,8 @@ time, mark, audio, video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+  -webkit-tap-highlight-color: transparent; }
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -76,46 +77,91 @@ body {
 #math-viewport {
   height: 15vh;
   z-index: 50;
-  top: -2.5px;
+  top: -3.5px;
   left: 0;
   right: 0;
   position: fixed;
-  padding-top: .5em;
   margin: auto;
   border: #00ff00 solid 2.5px;
   border-radius: 0 0 25px 25px;
   background: rgba(0, 0, 0, 0.75);
   width: 80vw;
-  overflow: hidden; }
+  overflow: hidden;
+  display: flex; }
+  #math-viewport h2 {
+    font-size: 3em; }
   .isMobile #math-viewport {
     height: 15vh;
     width: 60vw; }
-  #math-viewport #current-problem {
-    color: #00ff00;
+    .isMobile #math-viewport span {
+      font-size: .65em; }
+    .isMobile #math-viewport h2 {
+      font-size: 1.75em; }
+  .incorrect #math-viewport {
+    border-color: red; }
+  #math-viewport #score-keeper-wrapper {
     text-align: center; }
-    #math-viewport #current-problem h3 {
-      font-size: 3em;
+    #math-viewport #score-keeper-wrapper #score-keeper {
+      color: red;
+      text-shadow: 0 0 7.5px red; }
+    #math-viewport #score-keeper-wrapper span {
+      color: #0000ff; }
+  #math-viewport #current-problem-wrapper {
+    flex: 1.5;
+    border-right: solid #00ff00 thin;
+    border-left: solid #00ff00 thin; }
+    #math-viewport #current-problem-wrapper #current-problem {
+      color: #ffffff;
+      text-align: center;
+      font-size: 3.25em;
+      text-shadow: 0 0 7.5px #ffffff;
+      vertical-align: middle; }
+      .isMobile #math-viewport #current-problem-wrapper #current-problem {
+        font-size: 2em; }
+      .incorrect #math-viewport #current-problem-wrapper #current-problem {
+        color: red;
+        text-shadow: 0 0 7.5px red; }
+  #math-viewport #timer-wrapper {
+    text-align: center; }
+    #math-viewport #timer-wrapper span {
+      color: #ffff00; }
+    #math-viewport #timer-wrapper #timer {
+      color: #00ff00;
       text-shadow: 0 0 7.5px #00ff00;
       vertical-align: middle; }
-      .isMobile #math-viewport #current-problem h3 {
-        font-size: 2em; }
+      .incorrect #math-viewport #timer-wrapper #timer {
+        color: red;
+        text-shadow: 0 0 7.5px red; }
   #math-viewport div {
+    flex: 1;
     display: inline-block;
-    vertical-align: top;
-    margin-left: 1.5%;
-    width: 30%;
-    height: 100%; }
-    #math-viewport div p {
-      color: #0000ff;
-      font-size: 1em;
-      padding: .25em;
-      text-align: right; }
+    margin: auto; }
 
 #rotation-error {
   position: absolute;
-  height: 100vh;
-  width: 100vw;
-  z-index: 20; }
+  height: 60vh;
+  width: 60vw;
+  background: #000000;
+  z-index: 100;
+  color: #ffffff;
+  font-size: 1.25em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20vh 20vw; }
+  #rotation-error #orientation-warning {
+    background-color: #ffff00;
+    background-image: url(src/assets/images/phone.png);
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 125px;
+    width: 125px;
+    border-radius: 200px;
+    margin-bottom: 2em; }
 
 #global-wrapper {
   height: 100vh;
@@ -142,6 +188,18 @@ body {
     overflow: hidden;
     position: relative;
     z-index: 20; }
+    #global-wrapper #game-stage-wrapper #user-feedback-display {
+      position: absolute;
+      height: 100vh;
+      width: 100vw;
+      visibility: hidden;
+      opacity: 0.5; }
+      #global-wrapper #game-stage-wrapper #user-feedback-display.incorrect {
+        background: red;
+        visibility: visible; }
+      #global-wrapper #game-stage-wrapper #user-feedback-display.correct {
+        background: #00ff00;
+        visibility: visible; }
     #global-wrapper #game-stage-wrapper #crosshair {
       position: absolute;
       height: 5em;
@@ -159,6 +217,10 @@ body {
 
 .control-button {
   height: 50vh;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
   -moz-user-select: none;
   /* Firefox */
   -ms-user-select: none;
@@ -171,6 +233,18 @@ body {
   /* Disable Android and iOS callouts*/ }
   .control-button:first-of-type {
     border-bottom: #000000 solid thick; }
+  .control-button .inset {
+    height: 50px;
+    width: 50px;
+    background-color: #b60b0b;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-size: 2em;
+    text-align: center;
+    color: red; }
 
 footer {
   position: fixed;
@@ -208,9 +282,7 @@ footer {
 @media only screen and (orientation: portrait) {
   #global-wrapper {
     visibility: hidden;
-    display: none; }
-  #rotation-error {
-    display: block; } }
+    display: none; } }
 
 @media only screen and (orientation: landscape) {
   #rotation-error {
