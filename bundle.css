@@ -43,6 +43,25 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+.btn {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 1.25em 5em;
+  display: inline-block;
+  margin: 15px 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s; }
+
 @font-face {
   font-family: 'Nasalization Rg';
   src: url(src/assets/fonts/nasalization/NasalizationRg-Regular.eot);
@@ -62,22 +81,91 @@ html, body {
   height: 100vh;
   width: 100vw; }
 
-body {
-  background: rgba(0, 0, 0, 0.75); }
-  body::after {
-    content: "";
-    background: url(src/assets/images/starField.png);
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1; }
+body::after {
+  content: "";
+  background: url(src/assets/images/starField.png);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
+
+#intro-page-wrapper {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  z-index: -10;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.00;
+  visibility: hidden;
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s; }
+  #intro-page-wrapper.active {
+    opacity: 1.00;
+    visibility: visible;
+    z-index: 60; }
+  #intro-page-wrapper #titles {
+    margin-bottom: 2.5em; }
+    #intro-page-wrapper #titles h1 {
+      color: white;
+      font-size: 5em;
+      text-shadow: 0 0 7.5px #ffffff; }
+      #intro-page-wrapper #titles h1 span {
+        font-size: .6em;
+        display: block;
+        text-shadow: 0 0 7.5px #ffffff; }
+      .isMobile #intro-page-wrapper #titles h1 {
+        font-size: 3.5em; }
+    #intro-page-wrapper #titles h4 {
+      color: #000000;
+      margin-top: .5em;
+      font-size: 1.75em;
+      padding: .35em;
+      background: #00ff00;
+      border-radius: 5px; }
+  #intro-page-wrapper #instructions-slider {
+    background: #0000ff;
+    width: 50vw;
+    height: 20vh;
+    position: relative;
+    color: #ffffff;
+    margin-bottom: .75em; }
+    #intro-page-wrapper #instructions-slider::after {
+      content: "";
+      position: absolute;
+      left: -.75em;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      width: 100%;
+      height: 100%;
+      padding: .5em;
+      background: rgba(0, 0, 0, 0);
+      border: #0000ff thick solid;
+      border-radius: 5px; }
+    #intro-page-wrapper #instructions-slider li {
+      position: absolute;
+      background: #0000ff;
+      width: 100%;
+      height: 100%; }
+  #intro-page-wrapper #start.btn {
+    background: red;
+    border: red solid thin;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #ffffff; }
 
 #math-viewport {
   height: 15vh;
   z-index: 50;
-  top: -3.5px;
+  top: -15vh;
   left: 0;
   right: 0;
   position: fixed;
@@ -87,7 +175,11 @@ body {
   background: rgba(0, 0, 0, 0.75);
   width: 80vw;
   overflow: hidden;
-  display: flex; }
+  display: flex;
+  -webkit-transition: top .5s;
+  transition: top .5s; }
+  #math-viewport.active {
+    top: -3.5px; }
   #math-viewport h2 {
     font-size: 3em; }
   .isMobile #math-viewport {
@@ -210,7 +302,10 @@ body {
       right: 0;
       bottom: 0;
       background-image: url(src/assets/images/001-irregular-cross-hair.png);
-      background-size: contain; }
+      background-size: contain;
+      visibility: hidden; }
+      #global-wrapper #game-stage-wrapper #crosshair.active {
+        visibility: visible; }
       .isMobile #global-wrapper #game-stage-wrapper #crosshair {
         height: 3.5em;
         width: 3.5em; }
@@ -232,7 +327,7 @@ body {
   -webkit-touch-callout: none;
   /* Disable Android and iOS callouts*/ }
   .control-button:first-of-type {
-    border-bottom: #000000 solid thick; }
+    border-bottom: #b60b0b solid thick; }
   .control-button .inset {
     height: 50px;
     width: 50px;
